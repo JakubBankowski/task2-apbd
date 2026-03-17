@@ -2,10 +2,10 @@ namespace task2_apbd;
 
 public class Equipment
 {
-    private int id;
-    public string desc;
-    private EquipmentType equipmentType;
-    private static int ID = 0;
+    private int id{get;set;}
+    public string desc{get;set;}
+    private EquipmentType equipmentType{get;set;}
+    private static int ID = 1;
 
     public Equipment(string desc, EquipmentType equipmentType)
     {
