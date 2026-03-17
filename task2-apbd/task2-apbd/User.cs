@@ -11,8 +11,7 @@ public class User
 
     public User(string username, string password, UserType userType)
     {
-        id = ID;
-        ID++;
+        id = ID++;
         this.username = username;
         this.password = password;
         this.userType = userType;
