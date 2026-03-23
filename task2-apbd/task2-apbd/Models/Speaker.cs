@@ -10,4 +10,9 @@ public class Speaker : Equipment
         this.hasBluetooth = hasBluetooth;
         this.hasCDDrive = hasCdDrive;
     }
+
+    public override string ToString()
+    {
+        return base.ToString() + ",type: Speaker, hasBluetooth: " + hasBluetooth + ", hasCDDrive: " + hasCDDrive;
+    }
 }

@@ -6,6 +6,8 @@ public class User
     private string username { get; set; } = null;
     private string password { get; set; } = null;
     private UserType userType { get; set; }
+    
+    private List<Equipment> equipments { get; set; } = new List<Equipment>();
 
     private static int ID = 1;
     
@@ -33,6 +35,21 @@ public class User
     {
         return this.password == password;
 
+    }
+
+    public void AddEquipment(Equipment equipment)
+    {
+        equipments.Add(equipment);
+    }
+
+    public void RemoveEquipment(Equipment equipment)
+    {
+        equipments.Remove(equipment);
+    }
+    
+    public  List<Equipment> GetEquipments()
+    {
+        return equipments;
     }
 }
 

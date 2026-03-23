@@ -16,4 +16,6 @@ public class Singleton
     private Singleton(){}
 
     public List<User> Users { get; set; } = new List<User>();
+    public List<Equipment> Equipments { get; set; } = new List<Equipment>();
+    public List<Rental> Rentals { get; set; } = new List<Rental>();
 }

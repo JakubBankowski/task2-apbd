@@ -10,4 +10,8 @@ public class Laptop : Equipment
         this.hardDriveSize = hardDriveSize;
         this.operatingSystem = operatingSystem;
     }
+    public override string ToString()
+    {
+        return base.ToString() + ",type: Laptop, hard drive size: " + hardDriveSize + ", operating system: " + operatingSystem;
+    }
 }

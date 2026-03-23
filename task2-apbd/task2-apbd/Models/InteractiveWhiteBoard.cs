@@ -10,4 +10,8 @@ public class InteractiveWhiteBoard : Equipment
         this.resolutionX = resolutionX;
         this.resolutionY = resolutionY;
     }
+    public override string ToString()
+    {
+        return base.ToString() + ",type: WhiteBoard, resolutionX: " + resolutionX + ", resolutionY: " + resolutionY;
+    }
 }

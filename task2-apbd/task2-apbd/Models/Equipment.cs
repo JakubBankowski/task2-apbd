@@ -11,11 +11,6 @@ public abstract class Equipment
 
     private bool available = true;
 
-    private DateTime rentalDate;
-    private DateTime rentalEndDate;
-
-    private DateTime rentalReturnDate;
-
     public Equipment(string desc)
     {
         id = ID++;
@@ -35,5 +30,10 @@ public abstract class Equipment
     public void setUnAvailable()
     {
         this.available = false;
+    }
+
+    public override string ToString()
+    {
+        return "id: " + id + ", desc: " + desc + ", available: " + available;
     }
 }

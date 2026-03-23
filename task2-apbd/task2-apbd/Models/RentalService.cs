@@ -59,4 +59,26 @@ public class RentalService : IRentalService
         }
         return user;
     }
+
+    public void Rent(User user, Equipment equipment, DateTime startDate, DateTime endDate, Singleton db)
+    {
+        user.AddEquipment(equipment);
+        db.Rentals.Add(new Rental(user,  equipment, startDate, endDate));
+    }
+
+    public void DisplayStatus(Singleton db)
+    {
+        foreach (Equipment e in db.Equipments)
+        {
+            Console.WriteLine(e.ToString());
+        }
+    }
+    
+    public void DisplayUserRental(User user)
+    {
+        foreach (Equipment e in user.GetEquipments())
+        {
+            Console.WriteLine(e.ToString());
+        }
+    }
 }
