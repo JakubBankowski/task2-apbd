@@ -1,3 +1,5 @@
+using System.Runtime.InteropServices.JavaScript;
+
 namespace task2_apbd;
 
 public abstract class Equipment
@@ -8,8 +10,11 @@ public abstract class Equipment
     private static int ID = 1;
 
     private bool available = true;
-    
-    
+
+    private DateTime rentalDate;
+    private DateTime rentalEndDate;
+
+    private DateTime rentalReturnDate;
 
     public Equipment(string desc)
     {
