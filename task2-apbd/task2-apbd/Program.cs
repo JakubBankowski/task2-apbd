@@ -134,11 +134,8 @@ public class Program
                         Console.WriteLine();
                         break;
                     }
-                    else
-                    {
-                        Console.WriteLine("Wrong choice! Try again.");
-                        Console.ReadLine();
-                    }
+                    Console.WriteLine("Wrong choice! Try again.");
+                    Console.ReadLine();
                 }
             }
 
@@ -152,6 +149,91 @@ public class Program
                     Console.WriteLine("2) Return an item");
                     Console.WriteLine("3) Log out");
                     string choice_2 = Console.ReadLine();
+                    
+                    if (choice_2 == "1")
+                    {
+                        Equipment eq = null;
+                        Console.WriteLine("Choose an item by id: ");
+                        foreach (Equipment e in db.Equipments)
+                        {
+                            if (e.isAvailable())
+                            {
+                                Console.WriteLine(e);
+                            }
+                        }
+                        int chosenID =  int.Parse(Console.ReadLine());
+                        
+                        if (chosenID == null)
+                        {
+                            Console.WriteLine("No item found");
+                            Console.WriteLine();
+                            continue;
+                        }
+
+                        foreach (Equipment e in db.Equipments)
+                        {
+                            if (e.getID() == chosenID)
+                            {
+                                if (e.isAvailable())
+                                {
+                                    eq = e;
+                                    rentalService.Rent(user, eq, db);
+                                    break;
+                                }
+                            }
+                        }
+
+                        if (eq == null)
+                        {
+                            Console.WriteLine("Item unavailable");
+                        }
+
+                        continue;
+                    }
+
+                    if (choice_2 == "2")
+                    {
+                        Equipment eq = null;
+                        Console.WriteLine("Choose an item by id: ");
+                        foreach (Equipment e in user.GetEquipments())
+                        {
+                            Console.WriteLine(e);
+                        }
+                        int chosenID =  int.Parse(Console.ReadLine());
+                        
+                        if (chosenID == null)
+                        {
+                            Console.WriteLine("No item found");
+                            Console.WriteLine();
+                            continue;
+                        }
+
+                        foreach (Equipment e in user.GetEquipments())
+                        {
+                            if (e.getID() == chosenID)
+                            {
+                                eq = e;
+                                rentalService.ReturnItem(user, eq, db);
+                            }
+                        }
+
+                        if (eq == null)
+                        {
+                            Console.WriteLine("Item unavailable");
+                        }
+
+                        continue;
+                    }
+                    
+                    if (choice_2 == "3")
+                    {
+                        Console.WriteLine("Logging out");
+                        Console.WriteLine();
+                        break;
+                    }
+                    
+                    Console.WriteLine("Wrong choice! Try again.");
+                    Console.ReadLine();
                 }
             }
         }

@@ -6,7 +6,9 @@ public interface IRentalService
 
     public User LogIn(Singleton db);
 
-    public void Rent(User user, Equipment equipment, DateTime startDate, DateTime endDate, Singleton db);
+    public void Rent(User user, Equipment equipment, Singleton db);
+    
+    public void ReturnItem(User user, Equipment equipment, Singleton db);
 
     public void DisplayStatus(Singleton db);
 

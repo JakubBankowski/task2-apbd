@@ -21,6 +21,11 @@ public abstract class Equipment
     {
         return this.available;
     }
+
+    public int getID()
+    {
+        return id;
+    }
     
     public void setAvailable()
     {

@@ -60,10 +60,38 @@ public class RentalService : IRentalService
         return user;
     }
 
-    public void Rent(User user, Equipment equipment, DateTime startDate, DateTime endDate, Singleton db)
+    public void Rent(User user, Equipment equipment, Singleton db)
     {
-        user.AddEquipment(equipment);
-        db.Rentals.Add(new Rental(user,  equipment, startDate, endDate));
+        if (user.GetEquipments().Count < 2)
+        {
+            user.AddEquipment(equipment);
+            equipment.setUnAvailable();
+            db.Rentals.Add(new Rental(user,  equipment, DateTime.Now, DateTime.Now.AddDays(7)));
+            Console.WriteLine("You have successfully rented an item!");
+        }
+        else
+        {
+            Console.WriteLine("You cannot rent more items.");
+        }
+    }
+
+    public void ReturnItem(User user, Equipment equipment, Singleton db)
+    {
+        user.RemoveEquipment(equipment);
+        equipment.setAvailable();
+        foreach (Rental r in db.Rentals.ToList())
+        {
+            if (r.user == user && r.equipment == equipment && r.returnDate == null)
+            {
+                r.returnDate = DateTime.Now;
+                if (r.rentalEndDate >= DateTime.Now)
+                {
+                    Console.WriteLine("You have to pay a 5$ fee");
+                }
+                break;
+            }
+        }
+        
     }
 
     public void DisplayStatus(Singleton db)
