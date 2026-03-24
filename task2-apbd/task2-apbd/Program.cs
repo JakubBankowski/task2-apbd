@@ -148,12 +148,9 @@ public class Program
                 {
                     Console.WriteLine("Welcome " + user.GetUsername() + "!");
                     Console.WriteLine("Choose what you want to do: ");
-                    Console.WriteLine("1) Display equipment status");
-                    Console.WriteLine("2) Display user data");
-                    Console.WriteLine("3) Display overdue rentals");
-                    Console.WriteLine("4) Display a summary");
-                    Console.WriteLine("5) Add new equipment");
-                    Console.WriteLine("6) Log out");
+                    Console.WriteLine("1) Rent an item");
+                    Console.WriteLine("2) Return an item");
+                    Console.WriteLine("3) Log out");
                     string choice_2 = Console.ReadLine();
                 }
             }
