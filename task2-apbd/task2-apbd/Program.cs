@@ -208,7 +208,7 @@ public class Program
                             continue;
                         }
 
-                        foreach (Equipment e in user.GetEquipments())
+                        foreach (Equipment e in user.GetEquipments().ToList())
                         {
                             if (e.getID() == chosenID)
                             {

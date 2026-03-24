@@ -84,7 +84,7 @@ public class RentalService : IRentalService
             if (r.user == user && r.equipment == equipment && r.returnDate == null)
             {
                 r.returnDate = DateTime.Now;
-                if (r.rentalEndDate >= DateTime.Now)
+                if (r.rentalEndDate < DateTime.Now)
                 {
                     Console.WriteLine("You have to pay a 5$ fee");
                 }
