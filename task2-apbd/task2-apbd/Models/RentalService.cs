@@ -81,4 +81,126 @@ public class RentalService : IRentalService
             Console.WriteLine(e.ToString());
         }
     }
+
+    public void AddEquipment()
+    {
+        Console.WriteLine("Enter description: ");
+        string description = Console.ReadLine();
+        Console.WriteLine();
+        
+        Console.WriteLine("Enter equipment type: ");
+        Console.WriteLine("1) Laptop");
+        Console.WriteLine("2) Speaker");
+        Console.WriteLine("3) Whiteboard");
+        
+        string choice = Console.ReadLine();
+        Console.WriteLine();
+
+        if (choice == "1")
+        {
+            Console.WriteLine("Enter hard drive size: ");
+            int hardDriveSize = int.Parse(Console.ReadLine());
+
+            if (hardDriveSize == null)
+            {
+                Console.WriteLine("Wrong choice! Try again.");
+                return;
+            }
+            
+            Console.WriteLine("Enter hard operating system: ");
+            string operatingSystem = Console.ReadLine();
+            
+            if (operatingSystem == null)
+            {
+                Console.WriteLine("Wrong choice! Try again.");
+                return;
+            }
+            
+            Laptop laptop = new Laptop(description, hardDriveSize, operatingSystem);
+            Singleton.Instance.Equipments.Add(laptop);
+            Console.WriteLine("Success!");
+            Console.WriteLine();
+            return;
+        }
+        
+        if (choice == "2")
+        {
+            bool hasBlth = false;
+            bool hasCD = false;
+            Console.WriteLine("Does it have bluetooth? ");
+            Console.WriteLine("1) Yes ");
+            Console.WriteLine("2) No ");
+            string b = Console.ReadLine();
+
+            if (b == null)
+            {
+                Console.WriteLine("Wrong choice! Try again.");
+                return;
+            }
+            
+            if (b == "1")
+            {
+                hasBlth = true;
+            }
+            else if (b == "2")
+            {
+                hasBlth = false;
+            }
+            
+            Console.WriteLine();
+            
+            Console.WriteLine("Does it have a CD driver? ");
+            Console.WriteLine("1) Yes ");
+            Console.WriteLine("2) No ");
+            string c = Console.ReadLine();
+
+            if (c == null)
+            {
+                Console.WriteLine("Wrong choice! Try again.");
+                return;
+            }
+            
+            if (c == "1")
+            {
+                hasCD = true;
+            }
+            else if (c == "2")
+            {
+                hasCD = false;
+            }
+            
+            Console.WriteLine();
+            
+            Speaker speaker = new Speaker(description, hasBlth, hasCD);
+            Singleton.Instance.Equipments.Add(speaker);
+            Console.WriteLine("Success!");
+            Console.WriteLine();
+            return;
+        }
+        
+        if (choice == "3")
+        {
+            Console.WriteLine("Enter resolution X: ");
+            int resolutionX = int.Parse(Console.ReadLine());
+            
+            Console.WriteLine("Enter resolution Y: ");
+            int resolutionY = int.Parse(Console.ReadLine());
+
+            if (resolutionX == null || resolutionY == null)
+            {
+                Console.WriteLine("Wrong choice! Try again.");
+                return;
+            }
+            
+            Console.WriteLine();
+            
+            InteractiveWhiteBoard whiteBoard = new InteractiveWhiteBoard(description, resolutionX, resolutionY);
+            Singleton.Instance.Equipments.Add(whiteBoard);
+            Console.WriteLine("Success!");
+            Console.WriteLine();
+            return;
+        }
+        
+        Console.WriteLine("Wrong choice!");
+    }
 }

@@ -19,7 +19,11 @@ public class User
         this.username = username;
         this.password = password;
         this.userType = userType;
+        
+        Singleton._instance.Users.Add(this);
     }
+    
+    public int GetId() {return id;}
 
     public string GetUsername()
     {
@@ -50,6 +54,11 @@ public class User
     public  List<Equipment> GetEquipments()
     {
         return equipments;
+    }
+
+    public override string ToString()
+    {
+        return $"{this.id} : {this.username}";
     }
 }
 

@@ -11,4 +11,6 @@ public interface IRentalService
     public void DisplayStatus(Singleton db);
 
     public void DisplayUserRental(User user);
+    
+    public void AddEquipment();
 }

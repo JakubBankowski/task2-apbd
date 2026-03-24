@@ -24,4 +24,9 @@ public class Rental
         this.rentalDate = rentalDate;
         this.rentalEndDate = rentalEndDate;
     }
+
+    public override string ToString()
+    {
+        return $"User id: {user.GetId()}, Equipment: {equipment.desc},  Rental Date: {rentalDate}, Rental EndDate: {rentalEndDate}";
+    }
 }
